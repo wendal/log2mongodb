@@ -373,27 +373,12 @@ public class MongoDbAppender extends AppenderSkeleton {
 		}
 	}
 
-	/**
-	 * @see org.apache.log4j.Appender#close()
-	 */
+	@Override
 	public void close() {
 		collection = null;
 	}
 
-	/**
-	 * @return The hostname of the MongoDB server <i>(will not be null, empty or
-	 *         blank)</i>.
-	 */
-	public String getHostname() {
-		return (hostname);
-	}
-
-	/**
-	 * @param hostname
-	 *            The MongoDB hostname to set <i>(must not be null, empty or
-	 *            blank)</i>.
-	 */
-	private void setHostname(final String hostname) {
+	public void setHostname(final String hostname) {
 		// PRECONDITIONS
 		assert hostname != null : "hostname must not be null";
 		assert hostname.trim().length() > 0 : "hostname must not be empty or blank";
@@ -401,32 +386,13 @@ public class MongoDbAppender extends AppenderSkeleton {
 		// Body
 		this.hostname = hostname;
 	}
-
-	/**
-	 * @return The port of the MongoDB server <i>(will be > 0)</i>.
-	 */
-	public int getPort() {
-		return (port);
-	}
-
-	/**
-	 * @param port
-	 *            The port to set <i>(must be > 0)</i>.
-	 */
+	
 	public void setPort(final int port) {
 		// PRECONDITIONS
 		assert port > 0 : "port must be > 0";
 
 		// Body
 		this.port = port;
-	}
-
-	/**
-	 * @return The database used in the MongoDB server <i>(will not be null,
-	 *         empty or blank)</i>.
-	 */
-	public String getDatabaseName() {
-		return (databaseName);
 	}
 
 	/**
@@ -444,14 +410,6 @@ public class MongoDbAppender extends AppenderSkeleton {
 	}
 
 	/**
-	 * @return The collection used within the database in the MongoDB server
-	 *         <i>(will not be null, empty or blank)</i>.
-	 */
-	public String getCollectionName() {
-		return (collectionName);
-	}
-
-	/**
 	 * @param collectionName
 	 *            The collection used within the database in the MongoDB server
 	 *            <i>(must not be null, empty or blank)</i>.
@@ -463,14 +421,6 @@ public class MongoDbAppender extends AppenderSkeleton {
 
 		// Body
 		this.collectionName = collectionName;
-	}
-
-	/**
-	 * @return The userName used to authenticate with MongoDB <i>(may be
-	 *         null)</i>.
-	 */
-	public String getUserName() {
-		return (userName);
 	}
 
 	/**
